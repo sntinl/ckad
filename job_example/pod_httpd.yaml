@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+  namespace: default
+spec:
+  nodeName: kind03-control-plane
+  containers:
+  - image: httpd:2.4.41-alpine
+    name: pod2-container

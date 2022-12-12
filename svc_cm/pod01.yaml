@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod01 
+  labels:
+    svc: env
+spec:
+  containers:
+    - name: demo
+      image: alpine
+      command: ["sleep","3600"]
+      env:
+        - name: DEVELOPER
+          valueFrom:
+            configMapKeyRef:
+              name: cm01
+              key: author
+        - name: ENVIRONMENT
+          valueFrom:
+            configMapKeyRef:
+              name: cm01
+              key: env
+  volumes:
+  - name: config
+    configMap:
+      name: cm01
+

@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job 
+metadata:
+  name: job01
+spec:
+  completions: 3
+  parallelism: 3
+  backoffLimit: 6
+  activeDeadlineSeconds: 30
+  template:
+    spec:
+      containers:
+      - name: job01
+        image: ubuntu
+        command: ["expr","3","+","7"]
+      restartPolicy: Never

@@ -1,0 +1,12 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello
+spec:
+  template:
+    spec:
+      containers:
+      - name: hello
+        image: busybox:1.28
+        command: ['sh','-c','echo "hello from k8s" && sleep 3600']
+      restartPolicy: OnFailure
